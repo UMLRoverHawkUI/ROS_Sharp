@@ -14,7 +14,7 @@
         xmlns:ArmGaugeUC="clr-namespace:ArmGaugeUC;assembly=ArmGaugeUC"
         Background="DarkGray" Height="1080" Icon="Icon.png" Left="0" Loaded="Window_Loaded" Name="Window1" Title="MainWindow" Top="0" Width="1920" WindowState="Maximized" WindowStyle="SingleBorderWindow" >
     <Grid>
-        <IMU:Gimbal Name="spinningstuff" IMU:Gimbal.TopicName="/imu/data" Width="200" Height="200" Margin="83,70,1615,772" />
+        <!--<IMU:Gimbal Name="spinningstuff" IMU:Gimbal.TopicName="/imu/data" Width="200" Height="200" Margin="83,70,1615,772" />-->
         
         <!-- BEGIN status blocks -->
         <TextBlock Height="auto" Width="auto" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,0" Name="LinkTextBlock" Text="Controller Link Status Text Block"  TextAlignment="Center" VerticalAlignment="Top"/>
@@ -25,9 +25,9 @@
         <TabControl Background="Honeydew" Height="518" HorizontalAlignment="Center" Margin="0,70,0,0" Name="MainCameraTabControl" VerticalAlignment="Top" Width="874" SelectionChanged="MainCameraTabControl_SelectionChanged">
             <TabItem Background="Gold" Header="Main Camera 1" Name="MainCamera1">
                 <Grid>
-                    <!--c:CompressedImageControl.TopicName="/camera0_stream/republished/image_raw/compressed"-->
+                    <!--c:CompressedImageControl.TopicName="/camera0/image_raw/compressed"-->
                     <c:CompressedImageControl MouseLeftButtonDown="UserControl_MouseLeftButtonDown" MouseLeftButtonUp="UserControl_MouseLeftButtonUp" MouseMove="UserControl_MouseMove"
-                    c:CompressedImageControl.TopicName="/camera0_stream/republished/image_raw/compressed"
+                    c:CompressedImageControl.TopicName="/camera0/image_raw/compressed"
                     x:FieldModifier="public" x:Name="camImage0">
                     </c:CompressedImageControl>
                     <Canvas Name="camRect0" />
@@ -35,9 +35,9 @@
             </TabItem>
             <TabItem Background="Red" Header="Rear Camera" Name="MainCamera2">
                 <Grid>
-                    <!--c:CompressedImageControl.TopicName="/camera1_stream/republished/image_raw/compressed"-->
+                    <!--c:CompressedImageControl.TopicName="/camera1/image_raw/compressed"-->
                     <c:CompressedImageControl MouseLeftButtonDown="UserControl_MouseLeftButtonDown" MouseLeftButtonUp="UserControl_MouseLeftButtonUp" MouseMove="UserControl_MouseMove"
-                    c:CompressedImageControl.TopicName="/camera1_stream/republished/image_raw/compressed"
+                    c:CompressedImageControl.TopicName="/camera1/image_raw/compressed"
                     x:FieldModifier="public" x:Name="camImage1">
                     </c:CompressedImageControl>
                     <Canvas Name="camRect1" />
@@ -45,9 +45,9 @@
             </TabItem>
             <TabItem Background="Green" Header="Main Camera 3" Name="MainCamera3">
                 <Grid>
-                    <!--c:CompressedImageControl.TopicName="/camera3_stream/republished/image_raw/compressed"-->
+                    <!--c:CompressedImageControl.TopicName="/camera3/image_raw/compressed"-->
                     <c:CompressedImageControl MouseLeftButtonDown="UserControl_MouseLeftButtonDown" MouseLeftButtonUp="UserControl_MouseLeftButtonUp" MouseMove="UserControl_MouseMove"
-                    c:CompressedImageControl.TopicName="/camera2_stream/republished/image_raw/compressed"
+                    c:CompressedImageControl.TopicName="/camera2/image_raw/compressed"
                     x:FieldModifier="public" x:Name="camImage2" >
                     </c:CompressedImageControl>
                     <Canvas Name="camRect2" />
@@ -55,9 +55,9 @@
             </TabItem>
             <TabItem Background="Blue" Header="Main Camera 4" Name="MainCamera4">
                 <Grid>
-                    <!--c:CompressedImageControl.TopicName="/camera3_stream/republished/image_raw/compressed"-->
+                    <!--c:CompressedImageControl.TopicName="/camera3/image_raw/compressed"-->
                     <c:CompressedImageControl MouseLeftButtonDown="UserControl_MouseLeftButtonDown" MouseLeftButtonUp="UserControl_MouseLeftButtonUp" MouseMove="UserControl_MouseMove"
-                    c:CompressedImageControl.TopicName="/camera3_stream/republished/image_raw/compressed"
+                    c:CompressedImageControl.TopicName="/camera3/image_raw/compressed"
                     x:FieldModifier="public" x:Name="camImage3">
                     </c:CompressedImageControl>
                     <Canvas Name="camRect3" />
@@ -73,8 +73,8 @@
             <EStopUC:UserControl1 Name="EStop" Visibility="Visible" Width="150" Height="150" Canvas.Left="1738" Canvas.Top="749" />
             <BattVoltUC:BattVolt Name="battvolt" Visibility="Visible" Width="200" Height="125" Canvas.Left="1688" Canvas.Top="908" />
             <rock:RockCounter Name="rockCounter" Canvas.Left="1132" Canvas.Top="933" />
-            <CameraSlidersUC:CSUC x:Name="MainCameraSlider" Visibility="Visible" Canvas.Left="36" Canvas.Top="384" Width="414" />
-            <StackPanel Visibility="Visible" Background="WhiteSmoke" Canvas.Left="333" Canvas.Top="75">
+            <!--<CameraSlidersUC:CSUC x:Name="MainCameraSlider" Visibility="Visible" Canvas.Left="36" Canvas.Top="384" Width="414" />
+            <StackPanel Visibility="Visible" Background="WhiteSmoke" Height="266" Canvas.Left="1650" Canvas.Top="84">
                 <TextBox Background="Gainsboro" HorizontalAlignment="Center">Recalibration</TextBox>
                 <RadioButton GroupName="Colors" Content="Blue" Checked="RadioButton_Checked_B" />
                 <RadioButton GroupName="Colors" Content="Green" Checked="RadioButton_Checked_G" />
@@ -90,7 +90,7 @@
                 <Button Click="Button_Click_Restore1">Rear Cam</Button>
                 <Button Click="Button_Click_Restore2">Cam 3</Button>
                 <Button Click="Button_Click_Restore3">Cam 4</Button>
-            </StackPanel>
+            </StackPanel>-->
             <!--<TiltSliderUC:TSUC x:Name="TiltSlider" Visibility="Visible" Canvas.Left="1421" Canvas.Top="201" Width="75" />-->
         </Canvas>
         
@@ -121,10 +121,10 @@
             <TimerStopwatchUC:TSWUC x:Name="TimerStopwatch" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="161" Margin="818,0,782,-3" />
         <!-- END user control interfaces -->
         
-        <Grid Height="300" Width="100" Background="White" Margin="1100,0,0,350">
+        <!--<Grid Height="300" Width="100" Background="White" Margin="1100,0,0,350">
             <Label Content="Tilt" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <Slider Orientation="Vertical" Minimum="-36000" Maximum="36000" TickFrequency="3600" IsSnapToTickEnabled="True" Name="Tilt_Slider" HorizontalAlignment="Center" VerticalAlignment="Center" Value="0" Height="250" ValueChanged="Tilt_Slider_ValueChanged"/>
             <Label FontSize="16" Content="0" Name="Tilt_Lvl" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-        </Grid>
+        </Grid>-->
     </Grid>
 </Window>

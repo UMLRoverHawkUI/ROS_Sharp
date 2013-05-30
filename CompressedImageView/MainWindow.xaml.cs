@@ -112,6 +112,7 @@ namespace WpfApplication1
             {
                 // ROS stuff
                 ROS.ROS_MASTER_URI = "http://10.0.3.5:11311";
+                //ROS.ROS_HOSTNAME_FORCE("10.10.10.220");
                 ROS.Init(new string[0], "The_UI_" + System.Environment.MachineName.Replace("-", "__"));
                 nh = new NodeHandle();
                 Dispatcher.Invoke(new Action(() =>
@@ -268,7 +269,7 @@ namespace WpfApplication1
             maincameramask = (byte)Math.Round(Math.Pow(2.0, MainCameraTabControl.SelectedIndex));
             //Console.WriteLine("************************Camera Selected: " + MainCameraTabControl.SelectedIndex.ToString() + "********************************");
 
-            Tilt_Slider.Value = tilt_prev[MainCameraTabControl.SelectedIndex];
+           // Tilt_Slider.Value = tilt_prev[MainCameraTabControl.SelectedIndex];
 
             //enter ADR?
             if (MainCameraTabControl.SelectedIndex == back_cam)
@@ -331,8 +332,8 @@ namespace WpfApplication1
 
         public void tilt_change(int i)
         {
-            if (i == 1 && Tilt_Slider.Value < 36000) Tilt_Slider.Value += 3600;
-            if (i == 0 && Tilt_Slider.Value > -36000) Tilt_Slider.Value += -3600;
+        //    if (i == 1 && Tilt_Slider.Value < 36000) Tilt_Slider.Value += 3600;
+           // if (i == 0 && Tilt_Slider.Value > -36000) Tilt_Slider.Value += -3600;
         }
 
         // right stick function; reset timer
@@ -348,9 +349,9 @@ namespace WpfApplication1
 
         private void Tilt_Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            int tilt = (int)Tilt_Slider.Value;
+            int tilt = 0;// (int)Tilt_Slider.Value;
             tilt_prev[MainCameraTabControl.SelectedIndex] = tilt;
-            Tilt_Lvl.Content = tilt.ToString();
+            //Tilt_Lvl.Content = tilt.ToString();
             if (tilt_pub != null) tilt_pub[MainCameraTabControl.SelectedIndex].publish(new Int32 { data = tilt });
         }
 
