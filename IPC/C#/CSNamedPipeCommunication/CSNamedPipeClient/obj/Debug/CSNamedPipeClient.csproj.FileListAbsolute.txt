@@ -1,0 +1,1 @@
+C:\ROS_Sharp\IPC\C#\Debug\CSNamedPipeClient.exe.config
